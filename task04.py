@@ -5,18 +5,19 @@ users = [
     {"name": "Jane Smith", "birthday": "1990.10.29"}
 ]
 
+today = datetime.today().date()
+upcoming_birthdays = []
+
 def get_upcoming_birthdays(users):
-    today = datetime.today().date()
-    congratulation_date = []
     for user in users:
-        birthday_this_year = datetime.strptime(user["birthday"], "%Y.%m.%d").date()
-        birthday_this_year = birthday_this_year.replace(year=today.year)
+        birthday = datetime.strptime(user["birthday"], "%Y.%m.%d").date()
+        birthday_this_year = birthday.replace(year=today.year)
         if birthday_this_year < today:
             birthday_this_year = birthday_this_year.replace(year=today.year + 1)
         if today <= birthday_this_year < today + timedelta(days=7):
-            congratulation_date.append(user["name"])
-    return congratulation_date
+            upcoming_birthdays.append({"name": user["name"], "congratulation_date": birthday_this_year.strftime("%Y.%m.%d")})
+    return upcoming_birthdays
 
 
-congratulation_date = get_upcoming_birthdays(users)
-print("Список привітань на цьому тижні:", congratulation_date)
+upcoming_birthdays = get_upcoming_birthdays(users)
+print("Список привітань на цьому тижні:", upcoming_birthdays)

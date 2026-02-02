@@ -1,6 +1,5 @@
 from datetime import datetime
 
-
 date = input("Введіть дату:")
 
 def get_days_from_today(date):

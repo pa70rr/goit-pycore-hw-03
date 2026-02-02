@@ -10,21 +10,17 @@ raw_numbers = [
     "(050)8889900",
     "38050-111-22-22",
     "38050 111 22 11   ",
-    "+ 33 7 56 78 90 12",
-
 ]
 
 def normalize_phone(phone_number):
-    # Видаляємо всі нецифрові символи
-    digits = re.sub(r'\D', '', phone_number)
-    
-    # Перевіряємо формат номера
-    if digits.startswith('+'):
-        return digits
-    elif digits.startswith('0'):
-        return '+38' + digits
+    numbers = re.sub(r'\D', '', phone_number)
+    if numbers.startswith('+'):
+        return numbers
+    elif numbers.startswith('0'):
+        return '+38' + numbers
     else:
-        return '+' + digits
-    
+        return '+' + numbers
+
 sanitized_numbers = [normalize_phone(num) for num in raw_numbers]
 print("Нормалізовані номери телефонів для SMS-розсилки:", sanitized_numbers)
+

@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 
 users = [
     {"name": "John Doe", "birthday": "1985.02.07"},
-    {"name": "Jane Smith", "birthday": "1990.02.05"},
+    {"name": "Jane Smith", "birthday": "1990.02.05"}
 ]
 
 def get_upcoming_birthdays(users):
@@ -22,5 +22,3 @@ def get_upcoming_birthdays(users):
 
 upcoming_birthdays = get_upcoming_birthdays(users)
 print("Список привітань на цьому тижні:", upcoming_birthdays)
-
-
